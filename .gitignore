@@ -5,3 +5,5 @@ mvnw
 mvnw.cmd
 *.iml
 learn-pom.xml
+processing-build-cfg/
+centos8-oracle-jre8/

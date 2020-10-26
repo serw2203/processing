@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: assembly-service2
+  namespace: trash
+  labels:
+    app: assembly
+    expose: 'true'
+    group: org.example
+    name: sergey
+    provider: fabric8
+    version: 1.0-SNAPSHOT
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30383
+  selector:
+    app: assembly
+    group: org.example
+    provider: fabric8
+  type: NodePort
+  sessionAffinity: None
