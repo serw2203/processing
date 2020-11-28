@@ -13,10 +13,6 @@
 
     <packaging>jar</packaging>
 
-    <properties>
-        <!--        <fabric8.mode>openshift</fabric8.mode>-->
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
@@ -97,7 +93,6 @@
 
     <build>
         <finalName>processing</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -114,10 +109,10 @@
                     <!--<layout>ZIP</layout>-->
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-war-plugin</artifactId>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -127,39 +122,40 @@
 
     <profiles>
         <profile>
-            <id>fabric8</id>
+<!--            keytool -import -alias docker -file /c/Workspace/hv-centos8/ssl/domain.crt -keystore cacerts-->
+            <id>jib</id>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>io.fabric8</groupId>
-                        <artifactId>fabric8-maven-plugin</artifactId>
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                        <version>2.6.0</version>
                         <configuration>
-                            <mode>openshift</mode>
-<!--                            <buildStrategy>s2i</buildStrategy>-->
-                            <resources>
-                                <labels>
-                                    <all>
-                                        <property>
-                                            <name>name</name>
-                                            <value>sergey</value>
-                                        </property>
-                                    </all>
-                                </labels>
-                            </resources>
-                            <generator>
-                                <config>
-                                    <spring-boot>
-<!--                                        <fromMode>docker</fromMode>-->
-<!--                                        <from>openjdk:8-alpine</from>-->
-                                    </spring-boot>
-                                </config>
-                            </generator>
+                            <from>
+                                <image>openjdk:8-alpine</image>
+                            </from>
+                            <to>
+                                <image>192.168.10.10/processing</image>
+                                <tags>
+                                    <tag>1.0.0</tag>
+                                </tags>
+                            </to>
+                            <container>
+                                <mainClass>org.example.Application</mainClass>
+                                <ports>
+                                    <port>8080</port>
+                                </ports>
+                                <jvmFlags>
+                                    <jvmFlag>-Dfile.encoding=UTF-8</jvmFlag>
+                                    <jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>
+                                </jvmFlags>
+                            </container>
+
                         </configuration>
                         <executions>
                             <execution>
-                                <id>fmp</id>
+                                <phase>package</phase>
                                 <goals>
-                                    <goal>resource</goal>
                                     <goal>build</goal>
                                 </goals>
                             </execution>

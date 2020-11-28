@@ -5,6 +5,9 @@
 https://habr.com/ru/company/redhatrussia/blog/511954/
 https://habr.com/ru/company/redhatrussia/blog/513948/
 https://habr.com/ru/company/redhatrussia/blog/515988/
+
+tekton
+https://docs.openshift.com/container-platform/4.5/pipelines/creating-applications-with-cicd-pipelines.html
 ```
 #OpenSSL
 ```

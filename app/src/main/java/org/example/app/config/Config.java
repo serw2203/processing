@@ -1,6 +1,7 @@
 package org.example.app.config;
 
 
+import com.google.common.eventbus.EventBus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -16,6 +17,11 @@ import java.util.Random;
 @Configuration
 @Slf4j
 public class Config implements InitializingBean {
+
+    @Bean
+    public EventBus bus() {
+        return new EventBus();
+    }
 
     @Component
     public static class BeanPP implements BeanPostProcessor {

@@ -1,0 +1,33 @@
+[ req ]
+default_bits           = 4096
+days                   = 9999
+distinguished_name     = subject
+# attributes             = req_attributes
+prompt                 = no
+# req_extensions         = req_ext
+# x509_extensions        = x509_ext
+
+[ subject ]
+CN                     = My Client Certificate
+
+# [ req_attributes ]
+# challengePassword      = password
+
+# [ req_ext ]
+# subjectAltName         = @alternate_names
+
+# [ x509_ext ]
+# subjectAltName         = @alternate_names
+
+# [ req_attributes ]
+# challengePassword      = password
+
+# [ alternate_names ]
+# DNS.1=localhost
+# IP.1=127.0.0.1
+# DNS.2=192.168.44.1.xip.io    
+# IP.2=192.168.44.1
+# DNS.3=192.168.55.1.xip.io    
+# IP.3=192.168.55.1
+# DNS.4=192.168.10.10.xip.io    
+# IP.4=192.168.10.10

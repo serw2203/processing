@@ -22,7 +22,6 @@ public class LogItAspect {
     }
 
     @Around("logIt()")
-
     public Object aroundMethodExecuted(ProceedingJoinPoint point) throws Throwable {
 
         Logger logger = LoggerFactory.getLogger(point.getSignature().getDeclaringType());
