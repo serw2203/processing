@@ -9,3 +9,4 @@ processing-build-cfg/processing.jar
 centos8-oracle-jre8/jre-8u271-linux-x64.rpm
 minikube-processing/processing.jar
 ssl-test/*.pem
+oc/
