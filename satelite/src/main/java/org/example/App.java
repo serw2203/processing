@@ -1,6 +1,5 @@
 package org.example;
 
-import com.sun.javafx.util.Logging;
 import lombok.SneakyThrows;
 import org.example.auth.AuthCallbackHandler;
 
@@ -11,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Permission;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -45,14 +43,7 @@ public class App {
     }
 
     private static void m2() {
-        System.out.println("Classloader of this class:"
-                + App.class.getClassLoader());
 
-        System.out.println("Classloader of Logging:"
-                + Logging.class.getClassLoader());
-
-        System.out.println("Classloader of ArrayList:"
-                + ArrayList.class.getClassLoader());
     }
 
     private static void m3() {
@@ -155,7 +146,7 @@ public class App {
     public static void main(String[] args) {
         System.setProperty(
                 "java.security.auth.login.config",
-                "C:\\Users\\ariadna\\Desktop\\processing\\assembly\\src\\main\\resources\\jaas.conf"
+                "C:\\Users\\ariadna\\Desktop\\processing\\satelite\\src\\main\\resources\\jaas.conf"
         );
 
         LoginContext context = new LoginContext("processing-auth", new AuthCallbackHandler());

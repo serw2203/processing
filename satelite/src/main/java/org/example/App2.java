@@ -2,6 +2,7 @@ package org.example;
 
 import com.google.common.base.Preconditions;
 import lombok.SneakyThrows;
+import lombok.val;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.cms.ContentInfo;
 import org.bouncycastle.cert.X509CertificateHolder;
@@ -13,7 +14,6 @@ import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.OutputEncryptor;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
-import org.bouncycastle.util.Store;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -44,8 +44,8 @@ public class App2 {
         X509Certificate certificate = (X509Certificate) certFactory
                 .generateCertificate(App2.class.getResourceAsStream("/Baeldung.cer"));
 
-        char[] keystorePassword = "password".toCharArray();
-        char[] keyPassword = "password".toCharArray();
+        val keystorePassword = "password".toCharArray();
+        val keyPassword = "password".toCharArray();
 
         KeyStore keystore = KeyStore.getInstance("PKCS12");
         keystore.load(App2.class.getResourceAsStream("/Baeldung.p12"), keystorePassword);
@@ -121,20 +121,17 @@ public class App2 {
             PrivateKey decryptionKey)
             throws CMSException {
 
-        byte[] decryptedData = null;
-        if (null != encryptedData && null != decryptionKey) {
-            CMSEnvelopedData envelopedData = new CMSEnvelopedData(encryptedData);
-
-            Collection<RecipientInformation> recipients
-                    = envelopedData.getRecipientInfos().getRecipients();
-            KeyTransRecipientInformation recipientInfo
-                    = (KeyTransRecipientInformation) recipients.iterator().next();
-            JceKeyTransRecipient recipient
-                    = new JceKeyTransEnvelopedRecipient(decryptionKey);
-
-            return recipientInfo.getContent(recipient);
+        if (encryptedData == null || decryptionKey == null) {
+            return null;
         }
-        return decryptedData;
+
+        CMSEnvelopedData envelopedData = new CMSEnvelopedData(encryptedData);
+        Collection<RecipientInformation> recipients = envelopedData.getRecipientInfos().getRecipients();
+        KeyTransRecipientInformation recipientInfo = (KeyTransRecipientInformation) recipients.iterator().next();
+        JceKeyTransRecipient recipient = new JceKeyTransEnvelopedRecipient(decryptionKey);
+
+        return recipientInfo.getContent(recipient);
+
     }
 
     public static byte[] signData(
@@ -142,18 +139,23 @@ public class App2 {
             X509Certificate signingCertificate,
             PrivateKey signingKey) throws Exception {
 
-        byte[] signedMessage = null;
-        List<X509Certificate> certList = new ArrayList<X509Certificate>();
+        byte[] signedMessage;
+        List<X509Certificate> certList = new ArrayList<>();
         CMSTypedData cmsData = new CMSProcessableByteArray(data);
         certList.add(signingCertificate);
-        Store certs = new JcaCertStore(certList);
+        JcaCertStore certs = new JcaCertStore(certList);
 
         CMSSignedDataGenerator cmsGenerator = new CMSSignedDataGenerator();
-        ContentSigner contentSigner
-                = new JcaContentSignerBuilder("SHA256withRSA").build(signingKey);
+
+        ContentSigner contentSigner = new JcaContentSignerBuilder("SHA256withRSA")
+                .build(signingKey);
+
         cmsGenerator.addSignerInfoGenerator(new JcaSignerInfoGeneratorBuilder(
-                new JcaDigestCalculatorProviderBuilder().setProvider(PROVIDER)
-                        .build()).build(contentSigner, signingCertificate));
+                new JcaDigestCalculatorProviderBuilder()
+                        .setProvider(PROVIDER)
+                        .build()
+                ).build(contentSigner, signingCertificate)
+        );
         cmsGenerator.addCertificates(certs);
 
         CMSSignedData cms = cmsGenerator.generate(cmsData, true);
@@ -169,6 +171,7 @@ public class App2 {
 
         SignerInformationStore signers = cmsSignedData.getSignerInfos();
         SignerInformation signer = signers.getSigners().iterator().next();
+
         Collection<X509CertificateHolder> certCollection = cmsSignedData.getCertificates().getMatches(signer.getSID());
         X509CertificateHolder certHolder = certCollection.iterator().next();
 
