@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>app</artifactId>
+            <artifactId>application</artifactId>
         </dependency>
 
         <dependency>
