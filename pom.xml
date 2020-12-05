@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporing.outputEncoding>UTF-8</project.reporing.outputEncoding>
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
         <assertj.version>3.6.1</assertj.version>
         <aspectjweaver.verson>1.8.9</aspectjweaver.verson>
         <guava.verson>29.0-jre</guava.verson>
@@ -120,8 +120,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                     <annotationProcessors>
                         <proc>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</proc>

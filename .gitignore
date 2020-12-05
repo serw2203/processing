@@ -10,3 +10,9 @@ trash/centos8-oracle-jre8/jre-8u271-linux-x64.rpm
 trash/minikube-processing/processing.jar
 ssl-test/*.pem
 oc/
+.history/
+.vscode/
+.project
+.settings/
+.classpath
+.factorypath

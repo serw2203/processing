@@ -31,15 +31,15 @@ public class AppEndpoint {
     String info0(@CookieValue(value = "user-name", defaultValue = "SERHIO") String userName,
                  @RequestHeader Map<String, String> headers) {
         return Joiner.on("\n").join(
-                service1.info(), new Random().nextInt(), userName
-                , "------------------------------"
-                , headers.entrySet().stream()
-                        .map(
-                                e -> Joiner.on(" = ").join(e.getKey(), e.getValue())
-                        )
-                        .collect(
-                                Collectors.joining("\n")
-                        )
+            service1.info(), new Random().nextInt(), userName
+            , "------------------------------"
+            , headers.entrySet().stream()
+                .map(
+                    e -> Joiner.on(" = ").join(e.getKey(), e.getValue())
+                )
+                .collect(
+                    Collectors.joining("\n")
+                )
         );
     }
 
@@ -62,12 +62,12 @@ public class AppEndpoint {
     public @ResponseBody
     ResponseEntity<String> env() {
         return ResponseEntity.ok("<pre>" + System.getenv().entrySet().stream()
-                .map(
-                        e -> Joiner.on(" = ").join(e.getKey(), e.getValue())
-                )
-                .collect(
-                        Collectors.joining("\n")
-                ) + "</pre>");
+            .map(
+                e -> Joiner.on(" = ").join(e.getKey(), e.getValue())
+            )
+            .collect(
+                Collectors.joining("\n")
+            ) + "</pre>");
     }
 
     @GetMapping("/user1")
@@ -87,23 +87,23 @@ public class AppEndpoint {
 //        response.setHeader("Connection", "close");
 
         final ResponseEntity.BodyBuilder bodyBuilder = ResponseEntity.ok()
-                .header(HttpHeaders.CONNECTION, "close")
-                .header(HttpHeaders.CACHE_CONTROL, "no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
+            .header(HttpHeaders.CONNECTION, "close")
+            .header(HttpHeaders.CACHE_CONTROL, "no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
 
         return Optional.ofNullable(session)
-                .map(
-                        HttpSession::getId
-                )
-                .map(
-                        s -> Optional.ofNullable(System.getenv().get("HOSTNAME"))
-                                .map(h -> Joiner.on("\n").join(s, " --- ", h))
-                                .orElse(s)
-                )
-                .map(
-                        bodyBuilder::body
-                )
-                .orElse(
-                        bodyBuilder.body("Session id not found")
-                );
+            .map(
+                HttpSession::getId
+            )
+            .map(
+                s -> Optional.ofNullable(System.getenv().get("HOSTNAME"))
+                    .map(h -> Joiner.on("\n").join(s, " --- ", h))
+                    .orElse(s)
+            )
+            .map(
+                bodyBuilder::body
+            )
+            .orElse(
+                bodyBuilder.body("Session id not found")
+            );
     }
 }
