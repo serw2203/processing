@@ -3,7 +3,6 @@ package org.example.app.jpa;
 import org.example.app.jpa.entity.LegalParty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,12 +12,11 @@ import java.math.BigInteger;
 @Configuration
 public class ServiceConfiguration {
 
-    @Service
-    @Transactional
+
     public static class LegalPartyService {
         @PersistenceContext
         private EntityManager entityManager;
-
+        @Transactional
         public void persist(LegalParty legalParty) {
             this.entityManager.persist(legalParty);
         }
