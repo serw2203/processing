@@ -25,8 +25,8 @@ const client_options = {
   hostname: '192.168.44.1.xip.io',
   port: 443,
   path: '/',
-  key: fs.readFileSync('client1-key.pem'),
-  cert: fs.readFileSync('client1-crt.pem'),
+  // key: fs.readFileSync('client1-key.pem'),
+  // cert: fs.readFileSync('client1-crt.pem'),
   ca: fs.readFileSync('ca-crt.pem')
 };
 
