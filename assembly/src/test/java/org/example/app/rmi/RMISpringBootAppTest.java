@@ -1,4 +1,4 @@
-package org.example.app;
+package org.example.app.rmi;
 
 import org.example.app.config.CalculateConfiguration;
 import org.example.app.service.calculator.CalculateAction;
@@ -16,8 +16,8 @@ import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(classes = {CalculateConfiguration.class, SpringBootAppTest.CalculateClientConfiguration.class})
-public class SpringBootAppTest {
+@SpringBootTest(classes = {CalculateConfiguration.class, RMISpringBootAppTest.CalculateClientConfiguration.class})
+public class RMISpringBootAppTest {
 
     @Configuration
     static class CalculateClientConfiguration {
