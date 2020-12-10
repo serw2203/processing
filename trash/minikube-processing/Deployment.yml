@@ -19,3 +19,5 @@ spec:
         - name: processing
           image: 'processing:latest'
           imagePullPolicy: Never
+          ports:
+          - containerPort: 8080

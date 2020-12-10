@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: activemq
+    namespace: default
+    labels:
+        app: activemq
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: activemq
+    template:
+        metadata:
+            labels:
+                app: activemq
+        spec:
+            containers:
+                - name: activemq
+                  image: 'rmohr/activemq:5.15.9'
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                  - containerPort: 61616
+                  - containerPort: 8161

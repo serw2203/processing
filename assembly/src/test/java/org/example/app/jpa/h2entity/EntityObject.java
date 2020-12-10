@@ -1,4 +1,4 @@
-package org.example.app.jpa.entity;
+package org.example.app.jpa.h2entity;
 
 import com.google.common.base.MoreObjects;
 import lombok.Getter;

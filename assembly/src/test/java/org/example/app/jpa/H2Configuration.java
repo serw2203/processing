@@ -2,6 +2,7 @@ package org.example.app.jpa;
 
 import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.HSQLDialect;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,13 +19,13 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories
-class BaseConfiguration {
+class H2Configuration {
 
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource(@Value("${h2.jdbc.url}") String jdbcUrl) {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(org.h2.Driver.class.getName());
-        dataSource.setUrl("jdbc:h2:mem:escrow;DB_CLOSE_DELAY=-1");
+        dataSource.setUrl(jdbcUrl);
         dataSource.setUsername("user");
         dataSource.setPassword("");
         return dataSource;
@@ -34,7 +35,7 @@ class BaseConfiguration {
     public LocalContainerEntityManagerFactoryBean containerEntityManagerFactoryBean(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan("org.example.app.jpa");
+        entityManagerFactoryBean.setPackagesToScan("org.example.app.jpa.h2entity");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.setProperty(Environment.DRIVER, org.h2.Driver.class.getName());

@@ -17,3 +17,4 @@ oc/
 .classpath
 .factorypath
 legal-party.sql
+/assembly/src/test/resources/application.properties
