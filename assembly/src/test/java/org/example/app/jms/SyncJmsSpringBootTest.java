@@ -1,34 +1,43 @@
 package org.example.app.jms;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.Test;
 
 import java.util.UUID;
+import java.util.concurrent.locks.ReentrantLock;
+
+import static org.testng.Assert.assertEquals;
 
 @SpringBootTest(
     classes = {
-        SyncJmsConfiguration.class
+        SyncJmsConfiguration.class,
     }
 )
 @Slf4j
-public class SyncJmsSpringBootTest {
+public class SyncJmsSpringBootTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    @Disabled
-    @Test
+    private final ReentrantLock lock = new ReentrantLock();
+
+    @Test(threadPoolSize = 4, invocationCount = 100, timeOut = 5000)
     public void send() {
+
         String sendMessage = UUID.randomUUID().toString();
         log.info(">>> ------- {}  ------- >>>", sendMessage);
-        this.jmsTemplate.convertAndSend("superqueue", sendMessage);
-        Object receiveMessage = this.jmsTemplate.receiveAndConvert("superqueue");
+
+        lock.lock();
+        jmsTemplate.convertAndSend("superqueue", sendMessage);
+        Object receiveMessage = jmsTemplate.receiveAndConvert("superqueue");
+        lock.unlock();
+
         log.info("<<< ------- {}  ------- <<<", receiveMessage);
-        Assertions.assertEquals(sendMessage, receiveMessage);
+        assertEquals(sendMessage, receiveMessage);
+
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
+import org.springframework.jms.connection.SingleConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
 
 @Configuration
@@ -28,12 +29,12 @@ public class AsyncJmsConfiguration {
         return new CachingConnectionFactory(this.activeMQConnectionFactory());
     }
 
+    @Primary
     @Bean
     public JmsTemplate jmsTemplate() {
         return new JmsTemplate(this.cachingConnectionFactory());
     }
 
-/*
 
     @Bean
     public SingleConnectionFactory singleConnectionFactory() {
@@ -41,12 +42,9 @@ public class AsyncJmsConfiguration {
     }
 
     @Bean
-    public JmsTemplate jmsTemplate() {
+    public JmsTemplate jmsTemplateSingle() {
         return new JmsTemplate(this.singleConnectionFactory());
     }
-
-*/
-
 
     @Bean
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
