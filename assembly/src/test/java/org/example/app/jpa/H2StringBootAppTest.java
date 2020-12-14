@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.math.BigInteger;
 
-@Disabled
+//@Disabled
 @SpringBootTest(classes = {H2Configuration.class, H2ServiceConfiguration.class})
+@ComponentScan(basePackages = {"org.example.app.jpa"})
 public class H2StringBootAppTest {
 
     @Autowired

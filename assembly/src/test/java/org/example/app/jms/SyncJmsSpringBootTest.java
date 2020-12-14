@@ -3,6 +3,7 @@ package org.example.app.jms;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Ignore;
@@ -19,6 +20,7 @@ import static org.testng.Assert.assertEquals;
         SyncJmsConfiguration.class,
     }
 )
+@ComponentScan(basePackages = {"org.example.app.jms"})
 @Slf4j
 public class SyncJmsSpringBootTest extends AbstractTestNGSpringContextTests {
 

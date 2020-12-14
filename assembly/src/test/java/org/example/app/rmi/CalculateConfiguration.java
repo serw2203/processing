@@ -1,4 +1,4 @@
-package org.example.app.config;
+package org.example.app.rmi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.app.service.calculator.CalculateAction;
@@ -25,6 +25,7 @@ public class CalculateConfiguration {
     @Bean
     public RmiServiceExporter calculateActionAddExporter(CalculateActionAdd actionAdd) {
         RmiServiceExporter exporter = new RmiServiceExporter();
+        //exporter.setRegistryHost("localhost");
         exporter.setServiceInterface(CalculateAction.class);
         exporter.setService(actionAdd);
         exporter.setServiceName("CalculateActionAdd");
@@ -35,6 +36,7 @@ public class CalculateConfiguration {
     @Bean
     public RmiServiceExporter calculateActionMultipleExporter(CalculateActionMultiple actionAdd) {
         RmiServiceExporter exporter = new RmiServiceExporter();
+        //exporter.setRegistryHost("localhost");
         exporter.setServiceInterface(CalculateAction.class);
         exporter.setService(actionAdd);
         exporter.setServiceName("CalculateActionMultiple");

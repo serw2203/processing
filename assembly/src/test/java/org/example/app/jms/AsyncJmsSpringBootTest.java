@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.core.JmsTemplate;
 
 import java.util.UUID;
@@ -16,6 +17,7 @@ import java.util.UUID;
         AsyncJmsConfiguration.class
     }
 )
+@ComponentScan(basePackages = {"org.example.app.jms"})
 @Slf4j
 public class AsyncJmsSpringBootTest {
 

@@ -1,6 +1,5 @@
 package org.example.app.rmi;
 
-import org.example.app.config.CalculateConfiguration;
 import org.example.app.service.calculator.CalculateAction;
 import org.example.app.service.calculator.CalculateActionAdd;
 import org.example.app.service.calculator.CalculateActionMultiple;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Disabled
 @SpringBootTest(classes = {CalculateConfiguration.class, RMISpringBootAppTest.CalculateClientConfiguration.class})
+@ComponentScan(basePackages = {"org.example.app.rmi"})
 public class RMISpringBootAppTest {
 
     @Configuration

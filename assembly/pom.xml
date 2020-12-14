@@ -128,21 +128,18 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
-            <version>${grpc.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>${grpc.version}</version>
             <scope>test</scope>
         </dependency>
 <!--        GRPC <<<<<<<<<<<<<<-->
@@ -165,10 +162,28 @@
         <finalName>processing</finalName>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/target/generated-test-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.github.os72</groupId>
                 <artifactId>protoc-jar-maven-plugin</artifactId>
                 <version>${protoc.jar-plugin.version}</version>
-                <executions>
+                 <executions>
                     <execution>
                         <phase>generate-test-sources</phase>
                         <goals>
@@ -177,17 +192,17 @@
                         <configuration>
                             <protocVersion>${protoc.version}</protocVersion>
                             <inputDirectories>
-                                <include>src/test/resources/proto</include>
+                                <inputDirectory>src/test/resources/proto</inputDirectory>
                             </inputDirectories>
                             <outputTargets>
                                 <outputTarget>
                                     <type>java</type>
-                                    <outputDirectory>target/generated-test-sources</outputDirectory>
+                                    <outputDirectory>${project.basedir}/target/generated-test-sources</outputDirectory>
                                 </outputTarget>
                                 <outputTarget>
                                     <type>grpc-java</type>
                                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}</pluginArtifact>
-                                    <outputDirectory>target/generated-test-sources</outputDirectory>
+                                    <outputDirectory>${project.basedir}/target/generated-test-sources</outputDirectory>
                                 </outputTarget>
                             </outputTargets>
                         </configuration>

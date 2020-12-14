@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 
 @Disabled
 @SpringBootTest(classes = {JrpcConfiguration.class})
+@ComponentScan(basePackages = {"org.example.app.jrpc"})
 @Slf4j
 public class JrpcSpringBootAppTest {
 
@@ -37,14 +39,14 @@ public class JrpcSpringBootAppTest {
 
     @Test
     public void test_0() {
-        String greeting = this.greeting("Sergey", "Vladimirovich", "Barkhatov");
+        String greeting = this.greeting("1", "2", "3");
         log.info(greeting);
-        Assertions.assertEquals("Hello Sergey Vladimirovich Barkhatov", greeting);
+        Assertions.assertEquals("Hello 1 2 3", greeting);
     }
     @Test
     public void test_1() {
-        String greeting = this.greeting("Sergey", "Vladimirovich", "Barkhatov", "Mr");
+        String greeting = this.greeting("1", "2", "3", "Mr");
         log.info(greeting);
-        Assertions.assertEquals("Hello Sergey Vladimirovich Barkhatov Mr", greeting);
+        Assertions.assertEquals("Hello 1 2 3 Mr", greeting);
     }
 }
