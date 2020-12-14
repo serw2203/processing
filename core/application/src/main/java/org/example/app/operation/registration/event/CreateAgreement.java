@@ -17,7 +17,7 @@ public class CreateAgreement {
         Agreement.AgreementState agreementState = Agreement.AgreementState.builder()
             .number(UUID.randomUUID().toString())
             .attr1(UUID.randomUUID().toString())
-            .attr2("ATTR2 ------------ <V6> --------------")
+            .attr2("ATTR2 ------------ <V7> --------------")
             .documentDate(LocalDate.now())
             .build();
 

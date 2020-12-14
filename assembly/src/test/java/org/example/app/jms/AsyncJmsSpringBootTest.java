@@ -10,6 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 
 import java.util.UUID;
 
+@Disabled
 @SpringBootTest(
     classes = {
         AsyncJmsConfiguration.class

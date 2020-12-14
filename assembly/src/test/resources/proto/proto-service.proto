@@ -1,0 +1,24 @@
+syntax = "proto3";
+package org.example.app.grpc;
+option java_multiple_files = true;
+
+enum FooBar {
+    FOO_BAR_UNSPECIFIED = 0;
+    FOO_BAR_FIRST_VALUE = 1;
+    FOO_BAR_SECOND_VALUE = 2;
+}
+
+message ProtoRequest {
+    string name = 1;
+    repeated string lastName = 2;
+    FooBar fooBar = 3;
+    map<string, int32> projects = 4;
+}
+
+message ProtoResponse {
+    string greeting = 1;
+}
+
+service ProtoService {
+    rpc handle(ProtoRequest) returns (ProtoResponse);
+}

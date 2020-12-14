@@ -13,6 +13,8 @@ kubectl create -f minikube-processing/Deployment.yaml
 
 kubectl expose deployment processing --type=NodePort --port=8080 --target-port=8080 --name=processing-service
 
+kubectl expose deployment processing --type=NodePort --name=processing-service
+
 kubectl scale deployment/processing --replicas=4
 
 *kubectl run processing --image=processing:latest --image-pull-policy=Never
@@ -22,6 +24,18 @@ kubectl scale deployment/processing --replicas=4
 *EOF
 
 curl --cookie "user-name=Sergey"  http://$(minikube ip):30701/env
+
+kubectl delete deployment -l=app=processing
+
+curl -s http://$(minikube ip):31840/agreement/registration | jq
+
+kubectl apply -f ~/Desktop/processing/trash/minikube-processing/Deployment.yml
+
+kubectl label namespace default istio-injection=enabled
+
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
+
+https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/
 ```info
 
 

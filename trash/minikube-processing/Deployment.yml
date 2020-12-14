@@ -12,6 +12,8 @@ spec:
       app: processing
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: 'true'
       labels:
         app: processing
     spec:
@@ -21,3 +23,10 @@ spec:
           imagePullPolicy: Never
           ports:
           - containerPort: 8080
+          resources:
+              limits:
+                  cpu: 300m
+                  memory: 300Mi
+              requests:
+                  cpu: 300m
+                  memory: 300Mi

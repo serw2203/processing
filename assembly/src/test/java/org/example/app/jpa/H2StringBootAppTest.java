@@ -3,6 +3,7 @@ package org.example.app.jpa;
 import org.example.app.jpa.h2entity.Employee;
 import org.example.app.jpa.h2entity.LegalParty;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigInteger;
 
+@Disabled
 @SpringBootTest(classes = {H2Configuration.class, H2ServiceConfiguration.class})
 public class H2StringBootAppTest {
 

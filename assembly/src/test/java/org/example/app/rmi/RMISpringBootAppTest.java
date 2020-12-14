@@ -4,6 +4,7 @@ import org.example.app.config.CalculateConfiguration;
 import org.example.app.service.calculator.CalculateAction;
 import org.example.app.service.calculator.CalculateActionAdd;
 import org.example.app.service.calculator.CalculateActionMultiple;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Disabled
 @SpringBootTest(classes = {CalculateConfiguration.class, RMISpringBootAppTest.CalculateClientConfiguration.class})
 public class RMISpringBootAppTest {
 
