@@ -12,6 +12,7 @@
         <module>core</module>
         <module>assembly</module>
         <module>adapters</module>
+        <module>synapse</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -131,12 +132,6 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.0</version>
                 </plugin>
-                <!--                <plugin>
-                                    <groupId>org.apache.maven.plugins</groupId>
-                                    <artifactId>maven-war-plugin</artifactId>
-                                    <version>3.3.1</version>
-                                </plugin>-->
-
             </plugins>
         </pluginManagement>
 

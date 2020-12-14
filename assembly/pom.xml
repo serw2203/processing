@@ -145,19 +145,6 @@
 <!--        GRPC <<<<<<<<<<<<<<-->
     </dependencies>
 
-    <repositories>
-<!--
-        <repository>
-                    <id>icm</id>
-                    <name>ICM</name>
-                    <url>http://maven.icm.edu.pl/artifactory/repo/</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-        </repository>
--->
-    </repositories>
-
     <build>
         <finalName>processing</finalName>
         <plugins>
@@ -225,14 +212,6 @@
                     <!--<layout>ZIP</layout>-->
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-war-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 
