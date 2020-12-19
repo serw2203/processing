@@ -1,0 +1,32 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: ibmmq
+    namespace: default
+    labels:
+        app: ibmmq
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ibmmq
+    template:
+        metadata:
+            annotations:
+                sidecar.istio.io/inject: 'false'
+            labels:
+                app: ibmmq
+        spec:
+            containers:
+                - name: ibmmq
+                  image: 'ibmcom/mq:latest'
+                  imagePullPolicy: IfNotPresent
+                  env:
+                      - name: LICENSE
+                        value: accept
+                      - name: MQ_QMGR_NAME
+                        value: Q1
+                  ports:
+                      - containerPort: 1414
+                      - containerPort: 9157
+                      - containerPort: 9443

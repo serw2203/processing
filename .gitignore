@@ -19,3 +19,5 @@ oc/
 legal-party.sql
 /assembly/src/test/resources/application.properties
 *.png
+*.log
+libs/

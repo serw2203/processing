@@ -97,18 +97,22 @@
         </dependency>
 
         <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>com.ibm.mq.allclient</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>mq-jms-spring-boot-starter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <scope>test</scope>
         </dependency>
-
-<!--
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jms</artifactId>
-            <scope>test</scope>
-        </dependency>
--->
 
         <dependency>
             <groupId>com.h2database</groupId>
@@ -124,7 +128,6 @@
             <scope>test</scope>
         </dependency>
 
-<!--        GRPC >>>>>>>>>>>>>> -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
@@ -142,7 +145,6 @@
             <artifactId>grpc-stub</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        GRPC <<<<<<<<<<<<<<-->
     </dependencies>
 
     <build>
@@ -209,7 +211,6 @@
                 </executions>
                 <configuration>
                     <mainClass>org.example.Application</mainClass>
-                    <!--<layout>ZIP</layout>-->
                 </configuration>
             </plugin>
         </plugins>

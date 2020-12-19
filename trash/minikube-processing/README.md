@@ -36,6 +36,9 @@ kubectl label namespace default istio-injection=enabled
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 
 https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/
+
+runmqsc <<< "define qlocal (DEV.QUEUE.4)"
+
 ```info
 
 
