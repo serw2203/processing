@@ -1,0 +1,78 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: processing-ingress
+    namespace: default
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+    rules:
+        -   host: processing.example.com
+            http:
+                paths:
+                    -   path: /
+                        pathType: Prefix
+                        backend:
+                            service:
+                                name: processing-service
+                                port:
+                                    number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: processing-ingress
+    namespace: default
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+    defaultBackend:
+        service:
+            name: default-http-backend
+            port:
+                number: 80
+    rules:
+        -   host: processing.example.com
+            http:
+                paths:
+                    -   path: /
+                        pathType: Prefix
+                        backend:
+                            service:
+                                name: processing-service
+                                port:
+                                    number: 8080
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    name: dashboard-ingress
+    namespace: kubernetes-dashboard
+spec:
+    rules:
+        -   host: dashboard.com
+            http:
+                paths:
+                    -   backend:
+                            serviceName: kubernetes-dashboard
+                            servicePort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: dashboard-ingress
+    namespace: kubernetes-dashboard
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+    rules:
+        -   host: dashboard.com
+            http:
+                paths:
+                    -   path: "/"
+                        pathType: Prefix
+                        backend:
+                            service:
+                                name: kubernetes-dashboard-service
+                                port:
+                                    number: 80

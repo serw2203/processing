@@ -1,0 +1,19 @@
+[ req ]
+default_bits           = 4096
+days                   = 9999
+distinguished_name     = subject
+prompt                 = no
+output_password        = password
+x509_extensions        = x509_ext
+
+[ subject ]
+CN                     ="minikube-cluster-local"
+[ x509_ext ]
+basicConstraints       = CA:TRUE
+subjectAltName         = @alternate_names
+
+[ alternate_names ]
+DNS.1                  = localhost
+IP.1                   = 127.0.0.1
+DNS.2                  = minikube
+DNS.3                  = minikube-cluster-local

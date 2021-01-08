@@ -1,4 +1,4 @@
-FROM image-registry.openshift-image-registry.svc:5000/trash/centos8-oracle-jre8
+FROM adoptopenjdk/openjdk11
 
 EXPOSE 8080
 

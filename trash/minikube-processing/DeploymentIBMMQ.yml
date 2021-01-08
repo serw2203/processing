@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     name: ibmmq
-    namespace: default
+    namespace: ibm
     labels:
         app: ibmmq
 spec:
@@ -18,15 +18,15 @@ spec:
                 app: ibmmq
         spec:
             containers:
-                - name: ibmmq
-                  image: 'ibmcom/mq:latest'
-                  imagePullPolicy: IfNotPresent
-                  env:
-                      - name: LICENSE
-                        value: accept
-                      - name: MQ_QMGR_NAME
-                        value: Q1
-                  ports:
-                      - containerPort: 1414
-                      - containerPort: 9157
-                      - containerPort: 9443
+                -   name: ibmmq
+                    image: 'ibmcom/mq:latest'
+                    imagePullPolicy: IfNotPresent
+                    env:
+                        -   name: LICENSE
+                            value: accept
+                        -   name: MQ_QMGR_NAME
+                            value: Q1
+                    ports:
+                        -   containerPort: 1414
+                        -   containerPort: 9157
+                        -   containerPort: 9443

@@ -1,12 +1,9 @@
-package org.example.app.jrpc;
+package org.example.app.grpc;
 
 import com.google.common.base.Joiner;
 import io.grpc.Server;
 import io.grpc.netty.NettyServerBuilder;
 import io.grpc.stub.StreamObserver;
-import org.example.app.grpc.ProtoRequest;
-import org.example.app.grpc.ProtoResponse;
-import org.example.app.grpc.ProtoServiceGrpc;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +14,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-public class JrpcConfiguration {
+public class GrpcConfiguration {
 
     private @Value("${proto-service.port}")
     Integer port;

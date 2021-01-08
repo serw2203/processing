@@ -1,5 +1,6 @@
 package org.example.app.ibm.jms;
 
+import com.ibm.mq.jms.MQQueue;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.*;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -38,11 +40,14 @@ public class IbmJmsSpringBootTest {
     public void test_1() {
         try (
             Connection connection = this.connectionFactory.createConnection();
-            Session session = connection.createSession();
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer producer = session.createProducer(session.createQueue("DEV.QUEUE.2"));
             MessageConsumer consumer = session.createConsumer(session.createQueue("DEV.QUEUE.2"))) {
 
             Message message = session.createTextMessage("Hello");
+            message.setJMSCorrelationID(UUID.randomUUID().toString());
+            message.setJMSReplyTo(new MQQueue("DEV.QUEUE.3"));
+//            message.setJMSExpiration(1L);
             producer.send(message);
 
             connection.start();
@@ -50,6 +55,7 @@ public class IbmJmsSpringBootTest {
             try {
                 TextMessage textMessage = (TextMessage) consumer.receive(1L);
                 Assertions.assertEquals("Hello", textMessage.getText());
+                Assertions.assertEquals(message.getJMSCorrelationID(), textMessage.getJMSCorrelationID());
             } finally {
                 connection.stop();
             }
@@ -87,6 +93,7 @@ public class IbmJmsSpringBootTest {
     @Autowired
     public IbmJmsConfiguration.Receiver receiver;
 
+    @Disabled
     @SneakyThrows
     @Test
     public void test_3() {

@@ -6,13 +6,11 @@ import org.example.model.Agreement;
 import org.example.app.service.RegistrationAgreementService;
 import org.example.logger.LogIt;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/agreement")
 @RequiredArgsConstructor

@@ -1,11 +1,9 @@
-package org.example.app.jrpc;
+package org.example.app.grpc;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
-import org.example.app.grpc.ProtoRequest;
-import org.example.app.grpc.ProtoServiceGrpc;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -14,10 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 
 @Disabled
-@SpringBootTest(classes = {JrpcConfiguration.class})
-@ComponentScan(basePackages = {"org.example.app.jrpc"})
+@SpringBootTest(classes = {GrpcConfiguration.class})
+@ComponentScan(basePackages = {"org.example.app.grpc"})
 @Slf4j
-public class JrpcSpringBootAppTest {
+public class GrpcSpringBootAppTest {
 
     private @Value("${proto-service.port}")
     Integer port;

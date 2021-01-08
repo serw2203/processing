@@ -18,9 +18,9 @@ spec:
                 app: activemq
         spec:
             containers:
-                - name: activemq
-                  image: 'rmohr/activemq:5.15.9'
-                  imagePullPolicy: IfNotPresent
-                  ports:
-                  - containerPort: 61616
-                  - containerPort: 8161
+                -   name: activemq
+                    image: 'rmohr/activemq:5.15.9'
+                    imagePullPolicy: IfNotPresent
+                    ports:
+                        -   containerPort: 61616
+                        -   containerPort: 8161

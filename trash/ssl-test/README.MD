@@ -36,6 +36,7 @@ https://blog.regolit.com/2010/02/16/personal-ca-and-self-signed-certificates
 ```bash
 openssl s_client -connect google.ru:443 </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | openssl x509 -out certificate.der -outform DER
 openssl x509 -inform DER -in certificate.der -noout -text
+openssl x509 -text -noout -in public.crt
 ```
 
 ```

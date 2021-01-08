@@ -1,32 +1,32 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: processing
-  namespace: default
-  labels:
-    app: processing
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: processing
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/inject: 'true'
-      labels:
+    name: processing
+    namespace: default
+    labels:
         app: processing
-    spec:
-      containers:
-        - name: processing
-          image: 'processing:latest'
-          imagePullPolicy: Never
-          ports:
-          - containerPort: 8080
-          resources:
-              limits:
-                  cpu: 300m
-                  memory: 300Mi
-              requests:
-                  cpu: 300m
-                  memory: 300Mi
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: processing
+    template:
+        metadata:
+            annotations:
+                sidecar.istio.io/inject: 'true'
+            labels:
+                app: processing
+        spec:
+            containers:
+                -   name: processing
+                    image: 'processing:latest'
+                    imagePullPolicy: Never
+                    ports:
+                        -   containerPort: 8080
+                    resources:
+                        limits:
+                            cpu: 300m
+                            memory: 300Mi
+                        requests:
+                            cpu: 300m
+                            memory: 300Mi

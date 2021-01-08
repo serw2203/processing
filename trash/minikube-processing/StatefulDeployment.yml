@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+    name: processing-stateful
+spec:
+    serviceName: "processing-stateful"
+    replicas: 2
+    selector:
+        matchLabels:
+            app: processing-stateful
+    template:
+        metadata:
+            labels:
+                app: processing-stateful
+            annotations:
+                sidecar.istio.io/inject: 'false'
+        spec:
+            containers:
+                -   name: processing-stateful
+                    image: 'processing:latest'
+                    imagePullPolicy: Never
+                    ports:
+                        -   containerPort: 8080
+                            name: http
