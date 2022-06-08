@@ -21,3 +21,5 @@ legal-party.sql
 *.png
 *.log
 libs/
+*.lnk
+strimzi-*

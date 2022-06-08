@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM adoptopenjdk/openjdk11:jdk-11.0.9.1_1
 
 EXPOSE 8080
 

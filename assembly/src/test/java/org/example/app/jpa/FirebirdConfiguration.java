@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -36,13 +38,18 @@ public class FirebirdConfiguration {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.setProperty(Environment.DRIVER, org.firebirdsql.jdbc.FBDriver.class.getName());
-        properties.put(Environment.HBM2DDL_AUTO, "none");
+        properties.put(Environment.HBM2DDL_AUTO, "update");
         properties.put("javax.persist.validation.mode", "none");
-        properties.put(Environment.SHOW_SQL, false);
+        properties.put(Environment.SHOW_SQL, true);
         properties.setProperty(Environment.IMPLICIT_NAMING_STRATEGY, "component-path");
         properties.setProperty(Environment.HBM2DDL_CHARSET_NAME, "UTF-8");
         properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.FirebirdDialect");
         entityManagerFactoryBean.setJpaProperties(properties);
         return entityManagerFactoryBean;
+    }
+
+    @Bean
+    public PlatformTransactionManager platformTransactionManager() {
+        return new JpaTransactionManager();
     }
 }

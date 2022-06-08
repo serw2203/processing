@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     name: activemq
-    namespace: default
+    namespace: amq
     labels:
         app: activemq
 spec:
@@ -13,7 +13,7 @@ spec:
     template:
         metadata:
             annotations:
-                sidecar.istio.io/inject: 'true'
+                sidecar.istio.io/inject: 'false'
             labels:
                 app: activemq
         spec:
@@ -24,3 +24,23 @@ spec:
                     ports:
                         -   containerPort: 61616
                         -   containerPort: 8161
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: activemq-service
+    namespace: amq
+    labels:
+        app: activemq
+spec:
+    type: NodePort
+    selector:
+        app: activemq
+    ports:
+        - port: 61616
+          name: p1
+          protocol: TCP
+        - port: 8161
+          name: p2
+          protocol: TCP

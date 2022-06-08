@@ -76,3 +76,22 @@ Get the host name for your route and navigate to it:
 ```
 oc get route myapp
 ```
+PATH=~/Desktop/processing/ui/node:$PATH
+
+html-webpack-plugin
+fork-ts-checker-webpack-plugin
+
+new HtmlWebpackPlugin ({ 
+    template: path.resolve(__dirname, './static/index.html'),
+    filename: 'index.html'
+});
+
+new ForkTsCheckerWebPackPlugin ({
+typescript: {
+    memoryLimit: 4096,
+    tsconfig: path.resolve(__dirname, 'tsconfig.json')
+}
+})
+
+
+curl -d '{ "test" : { "id": "value1", "name": "valu2" } }' -H "Content-Type: application/json" -X POST http://localhost:8080/test

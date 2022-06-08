@@ -14,6 +14,7 @@ import java.util.Base64;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 public class App {
@@ -86,7 +87,7 @@ public class App {
     }
 
     @SneakyThrows
-    private static void m4()  {
+    private static void m4() {
 //        ReentrantLock lock = new ReentrantLock();
         Runnable r = App::run;
         ThreadGroup g = new ThreadGroup("-G-");
@@ -101,7 +102,6 @@ public class App {
         Thread.sleep(1000L);
 
         System.out.println("That's all");
-
 
 
 //        synchronized (App.class) {
@@ -145,8 +145,8 @@ public class App {
     @SneakyThrows
     public static void main(String[] args) {
         System.setProperty(
-                "java.security.auth.login.config",
-                "C:\\Users\\ariadna\\Desktop\\processing\\satelite\\src\\main\\resources\\jaas.conf"
+            "java.security.auth.login.config",
+            "C:\\Users\\ariadna\\Desktop\\processing\\satelite\\src\\main\\resources\\jaas.conf"
         );
 
         LoginContext context = new LoginContext("processing-auth", new AuthCallbackHandler());

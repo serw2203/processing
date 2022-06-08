@@ -41,4 +41,21 @@ runmqsc <<< "define qlocal (DEV.QUEUE.4)"
 
 ```info
 
+apiVersion: v1
+kind: Service
+metadata:
+    name: processing-service
+    namespace: trash
+    labels:
+        app: processing
+spec:
+    type: NodePort
+    selector:
+        app: processing
+    ports:
+        - port: 8080
+          name: http
+          targetPort: 8080
+          protocol: TCP
+
 

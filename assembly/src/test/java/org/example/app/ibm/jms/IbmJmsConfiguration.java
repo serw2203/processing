@@ -76,19 +76,16 @@ public class IbmJmsConfiguration {
         return factory;
     }
 
-    public static class Receiver {
-        @Getter @Setter
-        private CompletableFuture<TextMessage> completableFuture;
+//    public static class Receiver {
+//        @JmsListener(destination = "DEV.QUEUE.1")
+//        public void onMessage(TextMessage message) {
+//            System.out.println("from template == " + message);
+//        }
+//    }
 
-        @JmsListener(destination = "DEV.QUEUE.1")
-        public void onMessage(TextMessage message) {
-            this.completableFuture.completeOnTimeout(message, 1L, TimeUnit.MILLISECONDS);
-        }
-    }
-
-    @Bean
-    public Receiver receiver() {
-        return new Receiver();
-    }
+//    @Bean
+//    public Receiver receiver() {
+//        return new Receiver();
+//    }
 
 }

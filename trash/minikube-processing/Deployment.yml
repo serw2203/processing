@@ -1,32 +1,167 @@
-kind: Deployment
-apiVersion: apps/v1
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
 metadata:
-    name: processing
-    namespace: default
-    labels:
-        app: processing
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2021-05-29T16:20:26Z"
+  generation: 1
+  labels:
+    app: "processing"
+  managedFields:
+  - apiVersion: "apps/v1"
+    fieldsType: "FieldsV1"
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          ".": {}
+          f:app: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            ".": {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              ".": {}
+              f:sidecar.istio.io/inject: {}
+            f:labels:
+              ".": {}
+              f:app: {}
+          f:spec:
+            f:containers:
+              k:{"name":"processing"}:
+                ".": {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  ".": {}
+                  k:{"containerPort":8080,"protocol":"TCP"}:
+                    ".": {}
+                    f:containerPort: {}
+                    f:protocol: {}
+                f:resources:
+                  ".": {}
+                  f:limits:
+                    ".": {}
+                    f:cpu: {}
+                    f:memory: {}
+                  f:requests:
+                    ".": {}
+                    f:cpu: {}
+                    f:memory: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: "kubectl-create"
+    operation: "Update"
+    time: "2021-05-29T16:20:26Z"
+  - apiVersion: "apps/v1"
+    fieldsType: "FieldsV1"
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          ".": {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          ".": {}
+          k:{"type":"Available"}:
+            ".": {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            ".": {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: "kube-controller-manager"
+    operation: "Update"
+    time: "2022-02-06T17:51:19Z"
+  name: "processing"
+  namespace: "default"
+  resourceVersion: "755357"
+  uid: "e9b26576-66df-466d-aebc-d13c3d756195"
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app: processing
-    template:
-        metadata:
-            annotations:
-                sidecar.istio.io/inject: 'true'
-            labels:
-                app: processing
-        spec:
-            containers:
-                -   name: processing
-                    image: 'processing:latest'
-                    imagePullPolicy: Never
-                    ports:
-                        -   containerPort: 8080
-                    resources:
-                        limits:
-                            cpu: 300m
-                            memory: 300Mi
-                        requests:
-                            cpu: 300m
-                            memory: 300Mi
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: "processing"
+  strategy:
+    rollingUpdate:
+      maxSurge: "25%"
+      maxUnavailable: "25%"
+    type: "RollingUpdate"
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: "processing"
+    spec:
+      containers:
+      - image: "processing:latest"
+        imagePullPolicy: "Never"
+        name: "processing"
+        ports:
+        - containerPort: 8080
+          protocol: "TCP"
+        resources:
+          limits:
+            cpu: "300m"
+            memory: "300Mi"
+          requests:
+            cpu: "300m"
+            memory: "300Mi"
+        terminationMessagePath: "/dev/termination-log"
+        terminationMessagePolicy: "File"
+      dnsPolicy: "ClusterFirst"
+      restartPolicy: "Always"
+      schedulerName: "default-scheduler"
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2021-05-29T16:20:26Z"
+    lastUpdateTime: "2021-05-29T16:20:28Z"
+    message: "ReplicaSet \"processing-578cd89494\" has successfully progressed."
+    reason: "NewReplicaSetAvailable"
+    status: "True"
+    type: "Progressing"
+  - lastTransitionTime: "2022-02-06T17:51:19Z"
+    lastUpdateTime: "2022-02-06T17:51:19Z"
+    message: "Deployment has minimum availability."
+    reason: "MinimumReplicasAvailable"
+    status: "True"
+    type: "Available"
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

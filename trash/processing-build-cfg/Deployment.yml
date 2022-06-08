@@ -1,0 +1,32 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: processing
+    namespace: trash
+    labels:
+        app: processing
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: processing
+    template:
+        metadata:
+            annotations:
+                sidecar.istio.io/inject: 'false'
+            labels:
+                app: processing
+        spec:
+            containers:
+                -   name: processing
+                    image: 'image-registry.openshift-image-registry.svc:5000/trash/processing:latest'
+                    imagePullPolicy: IfNotPresent
+                    ports:
+                        -   containerPort: 8080
+                    resources:
+                        limits:
+                            cpu: 300m
+                            memory: 300Mi
+                        requests:
+                            cpu: 300m
+                            memory: 300Mi

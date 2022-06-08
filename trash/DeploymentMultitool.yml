@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: network-multitool
+    namespace: default
+    labels:
+        app: network-multitool
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: network-multitool
+    template:
+        metadata:
+            labels:
+                app: network-multitool
+        spec:
+            containers:
+                -   name: network-multitool
+                    image: 'praqma/network-multitool'
+                    imagePullPolicy: Never

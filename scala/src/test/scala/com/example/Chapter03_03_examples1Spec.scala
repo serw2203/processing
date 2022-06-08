@@ -34,7 +34,7 @@ class Chapter03_03_examples1Spec extends AnyFlatSpec with Matchers with Generato
     def f2[A]: A ⇒ (A, Unit) = a ⇒ (a, ())
 
     forAll { (n: Int) ⇒ f1(f2(n)) shouldEqual n }
-    //forAll { (x: (String, Unit)) ⇒ f2(f1(x)) shouldEqual x }
+//    forAll { (x: (String, Unit)) ⇒ f2(f1(x)) shouldEqual x }
   }
 
   // It is not true that ∀A : A + 1 ≡ 1, although these are equivalent in logic.

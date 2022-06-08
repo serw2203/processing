@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static org.testng.Assert.assertEquals;
 
-@Ignore
+//@Ignore
 @SpringBootTest(
     classes = {
         SyncJmsConfiguration.class

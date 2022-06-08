@@ -1,0 +1,24 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+    name: processing
+    namespace: trash
+    labels:
+        build: processing
+spec:
+    output:
+        to:
+            kind: ImageStreamTag
+            name: 'processing:latest'
+    resources: {}
+    successfulBuildsHistoryLimit: 3
+    failedBuildsHistoryLimit: 3
+    strategy:
+        type: Docker
+        dockerStrategy:
+            from:
+                kind: ImageStreamTag
+                name: 'openjdk11:latest'
+    source:
+        type: Binary
+        binary: {}

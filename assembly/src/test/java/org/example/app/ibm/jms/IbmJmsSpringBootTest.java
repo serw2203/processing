@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-@Disabled
+//@Disabled
 @SpringBootTest(classes = {IbmJmsConfiguration.class})
 @ComponentScan(basePackages = {"org.example.app.ibm.jms"})
 @Slf4j
@@ -28,12 +28,12 @@ public class IbmJmsSpringBootTest {
     @Autowired
     public ConnectionFactory connectionFactory;
 
-//    @Test
-//    public void test_0() {
-//        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello");
-//        String response = (String) jmsTemplate.receiveAndConvert("DEV.QUEUE.1");
-//        Assertions.assertEquals("Hello", response);
-//    }
+    @Test
+    public void test_0() {
+        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello");
+        String response = (String) jmsTemplate.receiveAndConvert("DEV.QUEUE.1");
+        Assertions.assertEquals("Hello", response);
+    }
 
     @SneakyThrows
     @Test
@@ -90,25 +90,25 @@ public class IbmJmsSpringBootTest {
         }
     }
 
-    @Autowired
-    public IbmJmsConfiguration.Receiver receiver;
+//    @Autowired
+//    public IbmJmsConfiguration.Receiver receiver;
 
     @Disabled
     @SneakyThrows
     @Test
     public void test_3() {
-        receiver.setCompletableFuture(new CompletableFuture<>());
-        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello");
-
-        Assertions.assertEquals("Hello",
-            receiver.getCompletableFuture().get(10L, TimeUnit.MILLISECONDS).getText()
-        );
-
-        receiver.setCompletableFuture(new CompletableFuture<>());
-        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello");
-        Assertions.assertEquals("Hello",
-            receiver.getCompletableFuture().get(10L, TimeUnit.MILLISECONDS).getText()
-        );
+//        receiver.setCompletableFuture(new CompletableFuture<>());
+//        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello");
+//
+//        Assertions.assertEquals("Hello",
+//            receiver.getCompletableFuture().get(10L, TimeUnit.MILLISECONDS).getText()
+//        );
+//
+//        receiver.setCompletableFuture(new CompletableFuture<>());
+//        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello");
+//        Assertions.assertEquals("Hello",
+//            receiver.getCompletableFuture().get(10L, TimeUnit.MILLISECONDS).getText()
+//        );
     }
 
 }

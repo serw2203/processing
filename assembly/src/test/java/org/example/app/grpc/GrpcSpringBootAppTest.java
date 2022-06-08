@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 
-@Disabled
+//@Disabled
 @SpringBootTest(classes = {GrpcConfiguration.class})
 @ComponentScan(basePackages = {"org.example.app.grpc"})
 @Slf4j

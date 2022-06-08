@@ -25,7 +25,7 @@ public class CalculateConfiguration {
     @Bean
     public RmiServiceExporter calculateActionAddExporter(CalculateActionAdd actionAdd) {
         RmiServiceExporter exporter = new RmiServiceExporter();
-        //exporter.setRegistryHost("localhost");
+//        exporter.setRegistryHost("localhost");
         exporter.setServiceInterface(CalculateAction.class);
         exporter.setService(actionAdd);
         exporter.setServiceName("CalculateActionAdd");
@@ -36,7 +36,7 @@ public class CalculateConfiguration {
     @Bean
     public RmiServiceExporter calculateActionMultipleExporter(CalculateActionMultiple actionAdd) {
         RmiServiceExporter exporter = new RmiServiceExporter();
-        //exporter.setRegistryHost("localhost");
+//        exporter.setRegistryHost("localhost");
         exporter.setServiceInterface(CalculateAction.class);
         exporter.setService(actionAdd);
         exporter.setServiceName("CalculateActionMultiple");

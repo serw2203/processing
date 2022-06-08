@@ -1,0 +1,30 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: splunk
+    namespace: splunk-ns
+    labels:
+        app: splunk
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: splunk
+    template:
+        metadata:
+            annotations:
+                sidecar.istio.io/inject: 'false'
+            labels:
+                app: splunk
+        spec:
+            containers:
+                -   name: splunk
+                    image: 'splunk/splunk:latest'
+                    imagePullPolicy: IfNotPresent
+                    env:
+                        -   name: SPLUNK_START_ARGS
+                            value: --accept-license
+                        -   name: SPLUNK_PASSWORD
+                            value: qwe12345
+                    ports:
+                        -   containerPort: 8000

@@ -17,7 +17,7 @@ import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Disabled
+//@Disabled
 @SpringBootTest(classes = {CalculateConfiguration.class, RMISpringBootAppTest.CalculateClientConfiguration.class})
 @ComponentScan(basePackages = {"org.example.app.rmi"})
 public class RMISpringBootAppTest {

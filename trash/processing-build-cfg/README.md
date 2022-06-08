@@ -5,3 +5,11 @@ oc new-build --strategy docker --binary --docker-image image-registry.openshift-
 
 oc start-build processing-build-cfg --from-dir . --follow
 ```
+
+```bash
+oc import-image openjdk11:latest --from=adoptopenjdk/openjdk11 --confirm
+
+oc new-build --strategy docker --binary --docker-image adoptopenjdk/openjdk11 --name processing
+
+oc start-build processing --from-dir . --follow
+```

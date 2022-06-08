@@ -29,7 +29,7 @@ object Chapter01_02_examples {
 
     def ex02(x: Int): (Int ⇒ Int) = y ⇒ y + x
 
-    val ex02a: Int ⇒ (Int ⇒ Int) = x ⇒ (y ⇒ y + x)
+    val ex02a: Int ⇒ (Int => Int) = x ⇒ (y ⇒ y + x)
 
     def ex03(x: Int): Boolean = !Chapter01_01_functions.is_prime(x)
 
@@ -44,36 +44,19 @@ object Chapter01_02_examples {
     def ex06(s: Seq[Set[Int]]): Seq[Set[Int]] = s.filter(t ⇒ t.size >= 3)
 }
 
+//println(
+//numbers.foldLeft(List[Int]())((xs, y) => xs :+ y)
+//)
+//
+//println(
+//numbers.foldRight(List[Int]())((y, xs) => xs :+ y)
+//)
+
 object App {
 
     def main(args: Array[String]): Unit = {
+         val l: List[List[Int]] = List(List(1,2,3), List (4,5,6))
 
-
-        val x = (for (i <- 1 to 5) yield i * 2).toList
-
-        println(x)
-
-//        (333 to 393).filter(_ % 2 == 0).foreach(println(_))
-//
-//        println((1 to 200).map(_ => "-").reduce(_ + _))
-//
-//        for (a <- 333 to 353) println(a)
-//
-//        val t = (1, 2, List(3, 4, 5)): (Int, Int, List[Int])
-//
-//        t match {
-//            case (x, y, z :: l) => l.foreach(i => println(s"$i"))
-//            case _ => println("No case")
-//        }
-//
-//        val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-//
-//        println(
-//            numbers.foldLeft(List[Int]())((xs, y) => xs :+ y)
-//        )
-//
-//        println(
-//            numbers.foldRight(List[Int]())((y, xs) => xs :+ y)
-//        )
+         println (l.flatMap(_.map(_ + 1)))
     }
 }

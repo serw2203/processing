@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: oracle-xe11
+    namespace: oracle
+    labels:
+        app: oracle-xe11
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: oracle-xe11
+    template:
+        metadata:
+            annotations:
+                sidecar.istio.io/inject: 'false'
+            labels:
+                app: oracle-xe11
+        spec:
+            containers:
+                -   name: oracle-xe11
+                    image: 'oracleinanutshell/oracle-xe-11g:latest'
+                    imagePullPolicy: IfNotPresent
+                    env:
+                        -   name: ORACLE_ENABLE_XDB
+                            value: 'true'
+                    ports:
+                        -   containerPort: 1521
+                        -   containerPort: 5500
+                        -   containerPort: 8080
+                    resources:
+                        limits:
+                            cpu: '2'
+                            memory: 1024Mi
+                        requests:
+                            cpu: '0.5'
+                            memory: 300Mi

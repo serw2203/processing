@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%boldMagenta(%d{yyyy-MM-dd HH:mm:ss}) %boldCyan([%thread]) %highlight(%-8p) %yellow(%C.%M): %magenta(%L) :: %m %n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="*" level="debug"/>
+    <logger name="org.example.app" level="info"/>
+
+    <root level="warn">
+        <appender-ref ref="stdout"/>
+    </root>
+
+</configuration>

@@ -32,7 +32,7 @@ CN                     = My Trusted Certificate
 basicConstraints       = CA:TRUE
 # keyUsage               = digitalSignature, keyEncipherment
 # extendedKeyUsage       = serverAuth
-subjectAltName         = @alternate_names
+# subjectAltName         = @alternate_names
 nsComment              = "Self-Signed SSL Certificate"
 
 [ req_ext ]
@@ -41,7 +41,7 @@ nsComment              = "Self-Signed SSL Certificate"
 basicConstraints       = CA:TRUE
 # keyUsage               = digitalSignature, keyEncipherment
 # extendedKeyUsage       = serverAuth
-subjectAltName         = @alternate_names
+# subjectAltName         = @alternate_names
 nsComment              = "Self-Signed SSL Certificate"
 
 # [ x509_ext2 ]
@@ -52,12 +52,6 @@ nsComment              = "Self-Signed SSL Certificate"
 # basicConstraints       = CA:TRUE
 # subjectAltName         = @alternate_names
 
-[ alternate_names ]
-DNS.1                  = localhost
-IP.1                   = 127.0.0.1
-DNS.2                  = 192.168.44.1.xip.io    
-IP.2                   = 192.168.44.1
-DNS.3                  = 192.168.55.1.xip.io    
-IP.3                   = 192.168.55.1
-DNS.4                  = 192.168.10.10.xip.io    
-IP.4                   = 192.168.10.10
+# [ alternate_names ]
+# DNS.1                  = localhost
+# IP.1                   = 127.0.0.1

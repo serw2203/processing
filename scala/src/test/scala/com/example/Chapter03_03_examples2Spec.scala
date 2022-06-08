@@ -1,7 +1,7 @@
 package com.example
 
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.should._
 import org.scalatest.prop.{GeneratorDrivenPropertyChecks, TableDrivenPropertyChecks}
 import org.scalatest.{Assertion}
 import org.scalacheck.Arbitrary._
@@ -64,7 +64,7 @@ class Chapter03_03_examples2Spec extends AnyFlatSpec with Matchers with Generato
 //      forAll { (t1: T1[A, B, C, D]) ⇒ f2(f1(t1)) shouldEqual t1 }
 //      forAll { (t2: T2[A, B, C, D]) ⇒ f1(f2(t2)) shouldEqual t2 }
 //    }
-
+//
 //    check[Int, Char, String, Boolean]()
   }
 
