@@ -2,7 +2,6 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     name: processing
-    namespace: trash
     labels:
         app: processing
 spec:
@@ -13,20 +12,13 @@ spec:
     template:
         metadata:
             annotations:
-                sidecar.istio.io/inject: 'false'
+                sidecar.istio.io/inject: 'true'
             labels:
                 app: processing
         spec:
             containers:
                 -   name: processing
-                    image: 'image-registry.openshift-image-registry.svc:5000/trash/processing:latest'
+                    image: 'processing:latest'
                     imagePullPolicy: IfNotPresent
                     ports:
                         -   containerPort: 8080
-                    resources:
-                        limits:
-                            cpu: 300m
-                            memory: 300Mi
-                        requests:
-                            cpu: 300m
-                            memory: 300Mi
