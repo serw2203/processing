@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: egressgateway-for-bootcom
+  namespace: default
+spec:
+  host: istio-egressgateway.istio-system.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    portLevelSettings:
+      - port:
+          number: 11443
+        tls:
+          mode: MUTUAL
+          sni: boot.com
+          clientCertificate: /etc/istio/processing-secret/tls.crt
+          privateKey: /etc/istio/processing-secret/tls.key
+          caCertificates: /etc/istio/processing-secret/ca.crt

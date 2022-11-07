@@ -1,7 +1,5 @@
 package org.example.app;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.Joiner;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -52,6 +49,7 @@ public class AppEndpoint {
 
     @GetMapping("/info1")
     @LogIt
+    @SneakyThrows
     public @ResponseBody
     String info1() {
         return service1.info() + " - info1 - " + new Random().nextInt();

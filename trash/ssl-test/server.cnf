@@ -4,28 +4,28 @@ days                   = 9999
 distinguished_name     = subject
 # attributes             = req_attributes
 prompt                 = no
-req_extensions         = req_ext
-x509_extensions        = x509_ext
+# req_extensions         = req_ext
+# x509_extensions        = x509_ext
 
 [ subject ]
-CN                     = minikube 
+CN                     = boot.com
 
 # [ req_attributes ]
 # challengePassword      = password
 
-[ req_ext ]
-subjectAltName         = @alternate_names
+# [ req_ext ]
+# subjectAltName         = @alternate_names
 
-[ x509_ext ]
+# [ x509_ext ]
 # subjectKeyIdentifier   = hash
 # authorityKeyIdentifier = keyid,issuer
 # basicConstraints       = CA:TRUE
 # keyUsage               = digitalSignature, keyEncipherment
 # extendedKeyUsage       = serverAuth
-subjectAltName         = @alternate_names
+# subjectAltName         = @alternate_names
 
-[ alternate_names ]
-DNS.1                  = minikube
-DNS.2                  = localhost
-IP.1                   = 172.30.145.158
-IP.2                   = 127.0.0.1
+# [ alternate_names ]
+# DNS.1                  = minikube
+# DNS.2                  = localhost
+# IP.1                   = 172.30.145.158
+# IP.2                   = 127.0.0.1

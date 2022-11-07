@@ -14,6 +14,8 @@ spec:
         metadata:
             annotations:
                 sidecar.istio.io/inject: 'false'
+                sidecar.istio.io/userVolumeMount: '[{"name":"my-cert", "mountPath":"/etc/my-cert", "readonly":true}]'
+                sidecar.istio.io/userVolume: '[{"name":"my-cert", "secret":{"secretName":"my-cert"}}]'
             labels:
                 app: activemq
         spec:

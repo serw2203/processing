@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: istio-egressgateway
+  namespace: default
+  labels:
+    app: "egress"
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - "boot.com"
+      tls:
+        mode: MUTUAL
+        sni: boot.com
+        serverCertificate: /etc/istio/processing-server-secret/tls.crt
+        privateKey: /etc/istio/processing-server-secret/tls.key
+        caCertificates: /etc/istio/processing-server-secret/ca.crt

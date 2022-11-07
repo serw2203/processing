@@ -13,3 +13,27 @@ oc new-build --strategy docker --binary --docker-image adoptopenjdk/openjdk11 --
 
 oc start-build processing --from-dir . --follow
 ```
+
+```bash
+curl http://$(minikube ip)/info1 -H "host: processing.com"
+
+kcc exec `kubectl get po -l app=processing -n default -o name` -c processing -n default -- curl -s http://boot.com/info1
+
+kcc exec -it `kubectl get po -l app=processing -n default -o name` -c processing -n default -- bash
+```
+
+STACKOVERFLOW
+
+https://stackoverflow.com/questions/59643479/istio-egress-mtls-for-external-services
+
+kcc exec `kubectl get po -l istio=egressgateway -n istio-system -o name` -n istio-system -- cat //etc//istio
+
+kubectl get secret processing-secret -n default -o yaml \
+| sed s/"namespace: default"/"namespace: istio-system"/\
+| kubectl apply -n istio-system -f -
+
+kubectl get secret processing-server-secret -n default -o yaml \
+| sed s/"namespace: default"/"namespace: istio-system"/\
+| kubectl apply -n istio-system -f -
+
+openssl pkcs7 -inform DER -outform PEM -in certificate.p7b -print_certs

@@ -321,7 +321,7 @@
                         <configuration>
                             <urls>
                                 <!--                                <url>http://minikube:32589/ws/countries.wsdl</url>-->
-                                <!--                                <url>file:///c:\Users\ariadna\Desktop\processing\camel\src\main\resources\countries.wsdl</url>-->
+                                <!--                                <url>file:///C:\Users\ariadna\Desktop\JAVA\processing\camel\src\main\resources\countries.wsdl</url>-->
                                 <url>file:///${project.basedir}\src\main\resources\countries.wsdl</url>
                             </urls>
                             <mappings>

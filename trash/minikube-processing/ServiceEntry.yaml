@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: bootcom
+  namespace: default
+spec:
+  exportTo:
+    - '.'
+  hosts:
+    - boot.com
+  ports:
+    - number: 80
+      name: http
+      protocol: HTTP
+    - number: 443
+      name: https
+      protocol: HTTPS
+      location: MESH_EXTERNAL
+  resolution: DNS

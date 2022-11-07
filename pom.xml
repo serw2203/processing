@@ -58,63 +58,63 @@
                 <artifactId>dom-mapping-core</artifactId>
                 <version>1.0.55</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\dom-mapping-core-1.0.55.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\dom-mapping-core-1.0.55.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse</groupId>
                 <artifactId>gateway-protobuf-api</artifactId>
                 <version>2.0.3</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\gateway-protobuf-api-2.0.3.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\gateway-protobuf-api-2.0.3.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.gateway.mq</groupId>
                 <artifactId>mq-gateway-proto</artifactId>
                 <version>1.0.54</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\mq-gateway-proto-1.0.54.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\mq-gateway-proto-1.0.54.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.core.service</groupId>
                 <artifactId>synapse-grpc-core</artifactId>
                 <version>1.1.13</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\synapse-grpc-core-1.1.13.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\synapse-grpc-core-1.1.13.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.tracing</groupId>
                 <artifactId>synapse-grpc-tracing</artifactId>
                 <version>1.1.4</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\synapse-grpc-tracing-1.1.4.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\synapse-grpc-tracing-1.1.4.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.logging</groupId>
                 <artifactId>synapse-logging</artifactId>
                 <version>1.0.5</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\synapse-logging-1.0.5.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\synapse-logging-1.0.5.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.logging</groupId>
                 <artifactId>synapse-logging-spring</artifactId>
                 <version>1.0.14</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\synapse-logging-spring-1.0.14.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\synapse-logging-spring-1.0.14.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.mapping</groupId>
                 <artifactId>transform-mapping-api</artifactId>
                 <version>1.0.77</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\transform-mapping-api-1.0.77.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\transform-mapping-api-1.0.77.jar</systemPath>
             </dependency>
             <dependency>
                 <groupId>com.sbt.synapse.transform</groupId>
                 <artifactId>transform-service-simple</artifactId>
                 <version>1.0.77</version>
                 <scope>system</scope>
-                <systemPath>C:\Users\ariadna\Desktop\processing\libs\transform-service-simple-1.0.77.jar</systemPath>
+                <systemPath>C:\Users\ariadna\Desktop\JAVA\processing\libs\transform-service-simple-1.0.77.jar</systemPath>
             </dependency>
 
             <!--            <dependency>-->
@@ -310,6 +310,11 @@
                     <annotationProcessors>
                         <proc>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</proc>
                     </annotationProcessors>
+<!--                    <compilerArguments>-->
+<!--                        <bootclasspath>-->
+<!--                            ${java.home}/lib/rt.jar${path.separator}${java.home}/lib/jce.jar${path.separator}${java.home}/../lib/tools.jar-->
+<!--                        </bootclasspath>-->
+<!--                    </compilerArguments>-->
                 </configuration>
             </plugin>
         </plugins>

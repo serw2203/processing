@@ -1,0 +1,1 @@
+kubecolor logs -f `kubectl get po -l app=processing -n default -o name` -n default -c istio-proxy

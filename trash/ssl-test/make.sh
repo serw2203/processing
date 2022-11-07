@@ -18,3 +18,5 @@ openssl verify -CAfile ca-crt.pem server-crt.pem
 
 openssl verify -CAfile ca-crt.pem client1-crt.pem
 
+keytool -import -file ca-crt.pem -keystore truststore.jks
+

@@ -43,13 +43,13 @@ public class IssueOperationService<O extends Operation> {
         processorsMappingService.getProcessors(operation.getClass(), operation.getStatus()).forEach(prc -> prc.revert(operation));
     }
 
-    private List<ValidationResult> validateAndSave(O operation) {
-        List<ValidationResult> validationResults = validate(operation);
+    private List<ValidationResult<?>> validateAndSave(O operation) {
+        List<ValidationResult<?>> validationResults = validate(operation);
         return validationResults;
     }
 
-    private List<ValidationResult> validate(O operation) {
-        ValidationResult result = validationService.validate(operation);
+    private List<ValidationResult<?>> validate(O operation) {
+        ValidationResult<?> result = validationService.validate(operation);
         if (!result.isPassed()) {
             throw new ValidationException(Collections.singletonList(result));
         }
@@ -65,7 +65,7 @@ public class IssueOperationService<O extends Operation> {
     }
 
     public Result<O> create(O operation) {
-        List<ValidationResult> validationResults = validateAndSave(operation);
+        List<ValidationResult<?>> validationResults = validateAndSave(operation);
 
         apply(operation);
 
@@ -79,9 +79,9 @@ public class IssueOperationService<O extends Operation> {
     public static class Result<T extends Operation> {
 
         private T value;
-        private List<ValidationResult> validationResult;
+        private List<ValidationResult<?>> validationResult;
 
-        Result(T operation, List<ValidationResult> validationResult) {
+        Result(T operation, List<ValidationResult<?>> validationResult) {
             this.value = operation;
             this.validationResult = validationResult;
         }

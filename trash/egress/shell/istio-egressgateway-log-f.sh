@@ -1,0 +1,1 @@
+kubecolor logs -f `kubectl get po -l istio=egressgateway -n istio-system -o name` -n istio-system

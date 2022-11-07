@@ -6,10 +6,10 @@ metadata:
     labels:
         app: processing
 spec:
-    type: NodePort
+    type: ClusterIP
     selector:
         app: processing
     ports:
         - port: 8080
-          name: http
+          name: http-8080
           protocol: TCP
