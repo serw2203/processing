@@ -35,6 +35,7 @@ spec:
                 end
                 
                 function envoy_on_response(response_handle)
+                    response_handle:headers():add("USER_ID", "USER")
                     response_handle:logWarn("<><><><><><><><><>")
                     response_handle:logWarn("Status: "..response_handle:headers():get(":status"))
                 end
