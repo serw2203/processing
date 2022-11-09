@@ -14,11 +14,13 @@ spec:
         - gateways:
             - mesh
           port: 80
+          protocol: HTTP
       route:
         - destination:
             host: istio-egressgateway.istio-system.svc.cluster.local
             port:
               number: 11443
+            protocol: HTTP
           weight: 100
     - match:
         - gateways:
