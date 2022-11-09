@@ -2,20 +2,22 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: envoyfilter-header
-  namespace: istio-system
+  namespace: default
 spec:
   workloadSelector:
     labels:
-      app: istio-egressgateway
-      istio: egressgateway
+      app: processing
   configPatches:
     - applyTo: HTTP_FILTER
       match:
-        context: GATEWAY
+        context: SIDECAR_OUTBOUND  # affect outbound traffic only
         listener:
           filterChain:
             filter:
-              name: "envoy.http_connection_manager"
+              name: "envoy.filters.network.http_connection_manager"
+              subFilter:
+                name: "envoy.filters.http.router"
+          portNumber: 80
       patch:
         operation: INSERT_BEFORE
         value:
@@ -24,6 +26,15 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
             default_source_code:
               inline_string: |
+                function envoy_on_request(request_handle)
+                  request_handle:logWarn("===============")
+                  request_handle:logWarn("Method: "..request_handle:headers():get(":method"))
+                  request_handle:logWarn("Path: "..request_handle:headers():get(":path"))
+                  print("!!!")
+
+                end
+                
                 function envoy_on_response(response_handle)
                     response_handle:logWarn("<><><><><><><><><>")
+                    response_handle:logWarn("Status: "..response_handle:headers():get(":status"))
                 end
