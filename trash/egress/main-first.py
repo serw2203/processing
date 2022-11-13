@@ -1,4 +1,3 @@
-
 print("Задача №1\nС клавиатуры вводится 2 целых числа. Проверить является ли одно из них делителем второго\n")
 
 
@@ -7,13 +6,20 @@ def input_int(welcome_message: str) -> int:
     while True:
         try:
             i = input(welcome_message)
-            i = int(i)
-            if i == 0:
-                print("\n'0' - не годится)\n")
-            else:
-                return i
+            return check_int(i)
         except ValueError:
             print("\n'{}' - не является целым числом\n".format(i))
+        except RuntimeError as e:
+            print(e)
+
+
+def check_int(i: str) -> int:
+    i = int(i)
+
+    if i != 0:
+        return i
+    else:
+        raise RuntimeError("\n'0' - не годится)\n")
 
 
 def check_divider(x: int, y: int) -> str:
