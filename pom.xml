@@ -19,6 +19,7 @@
         <module>rest</module>
         <module>camel</module>
         <module>web-service</module>
+        <module>scala3</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -26,11 +27,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporing.outputEncoding>UTF-8</project.reporing.outputEncoding>
-        <spring-boot.version>2.5.1</spring-boot.version>
-        <java.version>11</java.version>
+        <spring-boot.version>3.2.4</spring-boot.version>
+        <java.version>17</java.version>
         <assertj.version>3.6.1</assertj.version>
         <aspectjweaver.verson>1.8.9</aspectjweaver.verson>
-        <guava.verson>30.1.1-jre</guava.verson>
+        <guava.verson>33.0.0-jre</guava.verson>
         <h2.version>1.4.200</h2.version>
         <bc.verson>1.60</bc.verson>
 
@@ -38,15 +39,16 @@
         <protobuf.version>4.0.0-rc-2</protobuf.version>
         <protoc.version>3.14.0</protoc.version>
         <protoc.jar-plugin.version>3.11.4</protoc.jar-plugin.version>
-        <ibm.mq.client.version>9.1.2.0</ibm.mq.client.version>
+        <ibm.mq.client.version>9.3.5.0</ibm.mq.client.version>
         <mq-jms-starter.version>2.4.1</mq-jms-starter.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
@@ -228,10 +230,16 @@
                 <version>1.3.2</version>
             </dependency>
 
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+
             <!--            IBM-->
             <dependency>
                 <groupId>com.ibm.mq</groupId>
-                <artifactId>com.ibm.mq.allclient</artifactId>
+                <artifactId>com.ibm.mq.jakarta.client</artifactId>
                 <version>${ibm.mq.client.version}</version>
                 <exclusions>
                     <exclusion>
@@ -252,7 +260,7 @@
                 <exclusions>
                     <exclusion>
                         <groupId>com.ibm.mq</groupId>
-                        <artifactId>com.ibm.mq.allclient</artifactId>
+                        <artifactId>com.ibm.mq.jakarta.client</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -278,7 +286,11 @@
             <!--                <artifactId>spring-boot-starter-actuator</artifactId>-->
             <!--                <version>${spring-boot.version}</version>-->
             <!--            </dependency>-->
-
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -304,8 +316,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>17</source>
+                    <target>17</target>
                     <encoding>UTF-8</encoding>
                     <annotationProcessors>
                         <proc>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</proc>
@@ -316,6 +328,10 @@
 <!--                        </bootclasspath>-->
 <!--                    </compilerArguments>-->
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
         </plugins>
 

@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.*;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;

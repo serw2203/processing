@@ -1,8 +1,10 @@
 package org.example.app.jpa.firebird_entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.util.UUID;
 
 @NoArgsConstructor

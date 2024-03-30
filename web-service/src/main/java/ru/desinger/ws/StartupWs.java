@@ -1,5 +1,6 @@
 package ru.desinger.ws;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
+
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -25,7 +26,6 @@ import ru.desinger.springsoap.gen.Currency;
 import ru.desinger.springsoap.gen.GetCountryRequest;
 import ru.desinger.springsoap.gen.GetCountryResponse;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +48,6 @@ public class StartupWs {
         }
 
         public Country findCountry(String name) {
-            Assert.notNull(name);
 
             Country result = null;
 

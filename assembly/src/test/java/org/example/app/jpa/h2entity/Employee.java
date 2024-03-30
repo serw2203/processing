@@ -1,9 +1,11 @@
 package org.example.app.jpa.h2entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 
 @NoArgsConstructor
 @Getter

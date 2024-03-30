@@ -1,8 +1,8 @@
 package org.example.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "A_USER", schema = "", catalog = "")

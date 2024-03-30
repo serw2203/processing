@@ -95,3 +95,8 @@ typescript: {
 
 
 curl -d '{ "test" : { "id": "value1", "name": "valu2" } }' -H "Content-Type: application/json" -X POST http://localhost:8080/test
+
+
+vault write auth/kubernetes/config kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
+
+java --add-opens java.base/java.time=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/sun.util.calendar=ALL-UNNAMED --add-opens java.base/sun.util.locale=ALL-UNNAMED -jar target/processing.jar

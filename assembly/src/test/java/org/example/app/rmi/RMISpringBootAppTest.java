@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import org.springframework.remoting.rmi.RmiProxyFactoryBean;
+//import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,21 +24,21 @@ public class RMISpringBootAppTest {
 
     @Configuration
     static class CalculateClientConfiguration {
-        @Bean
-        public RmiProxyFactoryBean proxyCalculateActionAdd() {
-            RmiProxyFactoryBean rmiProxyFactory = new RmiProxyFactoryBean();
-            rmiProxyFactory.setServiceUrl("rmi://localhost:1099/CalculateActionAdd");
-            rmiProxyFactory.setServiceInterface(CalculateAction.class);
-            return rmiProxyFactory;
-        }
-
-        @Bean
-        public RmiProxyFactoryBean proxyCalculateActionMultiple() {
-            RmiProxyFactoryBean rmiProxyFactory = new RmiProxyFactoryBean();
-            rmiProxyFactory.setServiceUrl("rmi://localhost:1099/CalculateActionMultiple");
-            rmiProxyFactory.setServiceInterface(CalculateAction.class);
-            return rmiProxyFactory;
-        }
+//        @Bean
+//        public RmiProxyFactoryBean proxyCalculateActionAdd() {
+//            RmiProxyFactoryBean rmiProxyFactory = new RmiProxyFactoryBean();
+//            rmiProxyFactory.setServiceUrl("rmi://localhost:1099/CalculateActionAdd");
+//            rmiProxyFactory.setServiceInterface(CalculateAction.class);
+//            return rmiProxyFactory;
+//        }
+//
+//        @Bean
+//        public RmiProxyFactoryBean proxyCalculateActionMultiple() {
+//            RmiProxyFactoryBean rmiProxyFactory = new RmiProxyFactoryBean();
+//            rmiProxyFactory.setServiceUrl("rmi://localhost:1099/CalculateActionMultiple");
+//            rmiProxyFactory.setServiceInterface(CalculateAction.class);
+//            return rmiProxyFactory;
+//        }
     }
 
     @Autowired

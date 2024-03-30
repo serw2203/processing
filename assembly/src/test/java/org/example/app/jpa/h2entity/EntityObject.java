@@ -1,11 +1,12 @@
 package org.example.app.jpa.h2entity;
 
 import com.google.common.base.MoreObjects;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.app.jpa.SystemConstants;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.io.Serializable;
 
 @MappedSuperclass

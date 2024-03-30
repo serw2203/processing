@@ -1,6 +1,9 @@
 package org.example.app.ibm.jms;
 
-import com.ibm.mq.jms.MQQueue;
+
+import com.ibm.mq.jakarta.jms.MQQueue;
+import jakarta.jms.*;
+
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.core.JmsTemplate;
 
-import javax.jms.*;
+
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -39,10 +42,10 @@ public class IbmJmsSpringBootTest {
     @Test
     public void test_1() {
         try (
-            Connection connection = this.connectionFactory.createConnection();
-            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            MessageProducer producer = session.createProducer(session.createQueue("DEV.QUEUE.2"));
-            MessageConsumer consumer = session.createConsumer(session.createQueue("DEV.QUEUE.2"))) {
+                Connection connection = this.connectionFactory.createConnection();
+                Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+                MessageProducer producer = session.createProducer(session.createQueue("DEV.QUEUE.2"));
+                MessageConsumer consumer = session.createConsumer(session.createQueue("DEV.QUEUE.2"))) {
 
             Message message = session.createTextMessage("Hello");
             message.setJMSCorrelationID(UUID.randomUUID().toString());

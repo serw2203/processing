@@ -6,6 +6,7 @@ metadata:
 spec:
   hosts:
     - boot.com
+    - boot2.com  #?
   gateways:
     - istio-egressgateway
     - mesh
@@ -14,6 +15,7 @@ spec:
         - gateways:
             - mesh
           port: 80
+          host: boot.com #?
       route:
         - destination:
             host: istio-egressgateway.istio-system.svc.cluster.local
@@ -24,6 +26,7 @@ spec:
         - gateways:
             - istio-egressgateway
           port: 443
+          host: boot.com  #?
       route:
         - destination:
             host: boot.com

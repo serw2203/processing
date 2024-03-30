@@ -1,9 +1,10 @@
 package org.example.app.jpa.firebird_entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 

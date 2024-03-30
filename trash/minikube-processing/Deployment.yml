@@ -22,8 +22,8 @@ spec:
     metadata:
       annotations:
         sidecar.istio.io/inject: "true"
-        sidecar.istio.io/userVolumeMount: '[{"name":"processing-secret", "mountPath":"/etc/istio/processing-secret", "readonly":true}, {"name":"processing-server-secret", "mountPath":"/etc/istio/processing-server-secret", "readonly":true}]'
-        sidecar.istio.io/userVolume: '[{"name":"processing-secret", "secret":{"secretName":"processing-secret"}}, {"name":"processing-server-secret", "secret":{"secretName":"processing-server-secret"}}]'
+#        sidecar.istio.io/userVolumeMount: '[{"name":"processing-secret", "mountPath":"/etc/istio/processing-secret", "readonly":true}, {"name":"processing-server-secret", "mountPath":"/etc/istio/processing-server-secret", "readonly":true}]'
+#        sidecar.istio.io/userVolume: '[{"name":"processing-secret", "secret":{"secretName":"processing-secret"}}, {"name":"processing-server-secret", "secret":{"secretName":"processing-server-secret"}}]'
       labels:
         app: "processing"
     spec:

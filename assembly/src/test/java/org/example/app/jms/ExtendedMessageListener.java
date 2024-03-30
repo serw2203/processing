@@ -1,11 +1,8 @@
 package org.example.app.jms;
 
+import jakarta.jms.*;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.TextMessage;
 
 @Deprecated
 @Slf4j

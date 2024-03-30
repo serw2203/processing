@@ -10,6 +10,6 @@ spec:
     - port:
         number: 11443
         name: http3
-        protocol: HTTP
+        protocol: TCP  #?
       hosts:
         - istio-egressgateway.istio-system.svc.cluster.local

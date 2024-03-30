@@ -1,8 +1,9 @@
 package org.example.app.ibm.jms;
 
-import com.ibm.mq.jms.MQConnectionFactory;
-import com.ibm.msg.client.jms.JmsConstants;
-import com.ibm.msg.client.wmq.common.CommonConstants;
+
+import com.ibm.mq.jakarta.jms.MQConnectionFactory;
+import com.ibm.msg.client.jakarta.jms.JmsConstants;
+import com.ibm.msg.client.jakarta.wmq.common.CommonConstants;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,9 +18,11 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter;
 import org.springframework.jms.core.JmsTemplate;
 
-import javax.jms.TextMessage;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+
+import com.ibm.mq.jakarta.jms.MQQueue;
+import jakarta.jms.*;
 
 @Configuration
 @RequiredArgsConstructor

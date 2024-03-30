@@ -51,7 +51,14 @@ public class AppEndpoint {
     @LogIt
     @SneakyThrows
     public @ResponseBody
-    String info1() {
+    String info1(@RequestHeader Map<String, String> headers) {
+        System.out.println("========>");
+        headers.entrySet().stream()
+                .map(
+                        e -> Joiner.on(" = ").join(e.getKey(), e.getValue())
+                )
+                .forEach(log::info);
+        System.out.println("<========");
         return service1.info() + " - info1 - " + new Random().nextInt();
     }
 

@@ -1,14 +1,14 @@
 package org.example.app.jpa;
 
+import jakarta.persistence.PersistenceException;
 import org.example.app.jpa.firebird_entity.Employee;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 
-import javax.persistence.PersistenceException;
+//import javax.persistence.PersistenceException;
 
 // @Disabled
 @SpringBootTest(classes = {FirebirdConfiguration.class, FirebirdServiceConfiguration.class})
